@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sandoz Gulf Sales Forecast Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <h1>Sandoz pharmaceutical</h1>
+      <p>
+        AI-assisted quarterly sales forecasting and decision intelligence for the Gulf region (GCC),
+        focused on 2025 to 2026 planning.
+      </p>
+      <div class="hero-actions">
+        <button class="quick-btn" data-prompt="Where should we invest next quarter to boost sales?">Best Next Investment</button>
+        <button class="quick-btn" data-prompt="Which product should we fix first and how?">Top Product Fix</button>
+        <button class="quick-btn" data-prompt="Give me Q3 2025 to Q2 2026 leadership briefing.">Leadership Brief</button>
+      </div>
+    </header>
+
+    <section class="kpi-grid">
+      <article class="kpi-card">
+        <h2>Total Revenue Estimate</h2>
+        <p class="kpi-value" id="kpiRevenue">$317.5M</p>
+        <p class="kpi-note">Forecast period: Q3 2025 to Q2 2026</p>
+      </article>
+      <article class="kpi-card">
+        <h2>Forecast Accuracy</h2>
+        <p class="kpi-value" id="kpiMape">MAPE 7.3%</p>
+        <p class="kpi-note">Holdout benchmark for model quality</p>
+      </article>
+      <article class="kpi-card">
+        <h2>Products At Risk</h2>
+        <p class="kpi-value" id="kpiRisk">3</p>
+        <p class="kpi-note">Need targeted interventions</p>
+      </article>
+      <article class="kpi-card">
+        <h2>High-Upside Opportunities</h2>
+        <p class="kpi-value" id="kpiUpside">4</p>
+        <p class="kpi-note">Immediate growth opportunities</p>
+      </article>
+    </section>
+
+    <section class="compact-grid">
+      <article class="panel">
+        <h2>Quarterly Forecast (USD Millions)</h2>
+        <p class="section-subtitle">
+          Historicals (2024 actuals and 2025 realized/estimated) plus 2025 Q3 to 2026 Q2 forecast
+          with confidence intervals.
+        </p>
+        <div class="chart-wrap compact">
+          <canvas id="forecastChart"></canvas>
+        </div>
+        <div class="forecast-cards" id="forecastCards"></div>
+      </article>
+
+      <aside class="panel chatbot-panel">
+        <h2>Sales AI Agent (Real-Time)</h2>
+        <p class="section-subtitle">
+          Ask directly about products, countries, quarterly forecast, and actions.
+        </p>
+        <div id="chatWindow" class="chat-window"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" type="text" placeholder="Ask: Which country is underperforming?" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </aside>
+    </section>
+
+    <section class="two-col">
+      <article class="panel">
+        <h2>BCG-Style Product Matrix</h2>
+        <p class="section-subtitle">
+          X-axis: growth rate, Y-axis: revenue. Bubble size reflects market potential.
+        </p>
+        <div class="chart-wrap compact">
+          <canvas id="bcgChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>Country Growth Deep Dive</h2>
+        <p class="section-subtitle">Quarterly run-rate trend by Gulf market.</p>
+        <div class="chart-wrap compact">
+          <canvas id="countryChart"></canvas>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Product Performance by Region</h2>
+      <p class="section-subtitle">
+        Comparative performance to identify where products overperform or underperform.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Strongest Region</th>
+              <th>Weakest Region</th>
+              <th>Current Signal</th>
+              <th>Action Priority</th>
+            </tr>
+          </thead>
+          <tbody id="performanceTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>AI Insight Action Cards</h2>
+      <p class="section-subtitle">
+        Confidence-weighted recommendations generated from forecast and market gap signals.
+      </p>
+      <div class="insight-grid" id="insightGrid"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
